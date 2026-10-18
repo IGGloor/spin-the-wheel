@@ -1,0 +1,370 @@
+/* ---------- Design tokens (Classical design system) ---------- */
+:root {
+  --color-bg: #f3f2f2;
+  --color-surface: #eae9e9;
+  --color-text: #201f1d;
+  --color-divider: color-mix(in srgb, #201f1d 16%, transparent);
+  --color-neutral-600: #7d7979;
+
+  --color-accent: #b68235;
+  --color-accent-300: #facb8d;
+  --color-accent-400: #e1ad66;
+  --color-accent-600: #a06f24;
+  --color-accent-700: #7d5411;
+
+  --font-heading: "Cormorant Garamond", Georgia, serif;
+  --font-body: "Lora", Georgia, serif;
+
+  --space-1: 4.6px;
+  --space-2: 9.2px;
+  --space-3: 13.8px;
+  --space-4: 18.4px;
+  --space-6: 27.6px;
+  --space-8: 36.8px;
+
+  --radius-md: 4px;
+  --radius-lg: 7px;
+}
+
+/* ---------- Base ---------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+:focus { outline: none; }
+:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+
+/* ---------- Buttons & inputs ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  cursor: pointer;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.2;
+  color: var(--color-text);
+  background: transparent;
+  border: 1px solid transparent;
+  padding: var(--space-2) calc(var(--space-3) * 1.2);
+  border-radius: var(--radius-md);
+}
+.btn svg { display: block; }
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+.btn-primary { color: var(--color-accent); border-color: var(--color-accent); }
+.btn-primary:hover:not(:disabled) { background: color-mix(in srgb, var(--color-accent) 12%, transparent); }
+.btn-primary:active:not(:disabled) { background: color-mix(in srgb, var(--color-accent) 22%, transparent); }
+
+.btn-secondary { border-color: var(--color-divider); }
+.btn-secondary:hover:not(:disabled) { background: color-mix(in srgb, var(--color-text) 7%, transparent); }
+.btn-secondary:active:not(:disabled) { background: color-mix(in srgb, var(--color-text) 14%, transparent); }
+
+.btn-ghost { color: var(--color-accent); }
+.btn-ghost:hover:not(:disabled) { background: color-mix(in srgb, var(--color-accent) 10%, transparent); }
+.btn-ghost:active:not(:disabled) { background: color-mix(in srgb, var(--color-accent) 18%, transparent); }
+
+.btn-icon { width: 36px; height: 36px; padding: 0; flex: none; }
+
+.input {
+  width: 100%;
+  min-height: 36px;
+  padding: 6px 10px;
+  font: inherit;
+  font-size: 14px;
+  color: var(--color-text);
+  caret-color: var(--color-accent);
+  background: transparent;
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-md);
+}
+.input:hover { border-color: color-mix(in srgb, var(--color-text) 45%, transparent); }
+.input:focus-visible { border-color: var(--color-accent); outline-offset: 0; }
+.input:disabled { opacity: 0.6; }
+
+/* ---------- Page layout ---------- */
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.site-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-4) var(--space-8);
+  text-align: center;
+}
+
+.site-title {
+  font-family: var(--font-heading);
+  font-size: 26px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+.site-tagline {
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: 17px;
+  color: var(--color-neutral-600);
+}
+
+.layout {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch; /* the choices card grows to match the wheel column's height */
+  gap: var(--space-8);
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: var(--space-8);
+}
+
+/* ---------- Left column: choices ---------- */
+.choices {
+  flex: 1 1 320px;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: var(--space-6);
+  background: var(--color-surface);
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 3px 10px color-mix(in srgb, #2d2b2b 10%, transparent);
+}
+
+.kicker {
+  font-family: var(--font-heading);
+  font-size: 13px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-accent-700);
+  font-feature-settings: "tnum";
+}
+
+h1 {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 1.1;
+}
+
+.add-row {
+  display: flex;
+  gap: var(--space-2);
+}
+.add-row .input {
+  flex: 1;
+  min-width: 0;
+}
+
+.choice-list {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--color-divider);
+}
+
+.choice {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid var(--color-divider);
+}
+
+.choice-num {
+  width: 22px;
+  font-family: var(--font-heading);
+  font-size: 15px;
+  color: var(--color-accent-700);
+  font-feature-settings: "tnum";
+}
+
+.choice-dot {
+  flex: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.choice-label {
+  flex: 1;
+  min-width: 0;
+  font-size: 16px;
+  overflow-wrap: anywhere;
+}
+
+.empty {
+  margin: 0;
+  padding: var(--space-6) 0;
+  font-style: italic;
+  text-align: center;
+  color: var(--color-neutral-600);
+  border-bottom: 1px solid var(--color-divider);
+}
+
+.choices-footer {
+  margin-top: auto; /* keeps the count and Clear all at the bottom of the card */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.count {
+  font-size: 14px;
+  color: var(--color-neutral-600);
+  font-feature-settings: "tnum";
+}
+
+/* ---------- Right column: wheel ---------- */
+.wheel-area {
+  flex: 2 1 440px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.wheel-frame {
+  position: relative;
+  width: min(100%, 540px);
+  aspect-ratio: 1;
+}
+
+.wheel {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
+}
+
+.wheel-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 6px 14px rgba(32, 31, 29, 0.12));
+}
+
+/* Labels are HTML so they can use container-query units to scale with the wheel */
+.wheel-labels {
+  position: absolute;
+  inset: 0;
+  container-type: size;
+  pointer-events: none;
+}
+
+.wheel-label {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 42.86%; /* 180 / 420: text ends at radius 180 */
+  height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  transform-origin: 0 0;
+}
+
+.wheel-label span {
+  font-family: var(--font-body);
+  color: #fffaf2;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  line-height: 1;
+}
+
+/* Labels on the left half of the wheel are turned round so they read the right way up */
+.wheel-label.flipped span {
+  transform: rotate(180deg);
+}
+
+.pointer {
+  position: absolute;
+  left: 50%;
+  top: -14px;
+  width: 40px;
+  height: 48px;
+  transform: translateX(-50%);
+  filter: drop-shadow(0 2px 3px rgba(32, 31, 29, 0.25));
+}
+
+.spin-btn {
+  min-width: 200px;
+  padding: var(--space-3) var(--space-8);
+  font-size: 20px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.result {
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  text-align: center;
+}
+
+.result-name {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: 56px;
+  line-height: 1.05;
+  text-wrap: balance;
+  overflow-wrap: anywhere;
+  padding-bottom: var(--space-2);
+  border-bottom: 2px solid transparent;
+}
+
+.hint {
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: 20px;
+  color: var(--color-neutral-600);
+}
+
+/* ---------- Confetti ---------- */
+.confetti {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 50;
+}
+
+/* ---------- Small screens: columns stack ---------- */
+@media (max-width: 800px) {
+  .choices {
+    max-width: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .site-header,
+  .layout {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .result-name {
+    font-size: 40px;
+  }
+}
